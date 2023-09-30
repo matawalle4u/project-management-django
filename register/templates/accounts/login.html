@@ -1,12 +1,33 @@
-
-
-{% block title %}Login{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}"/>
 
 {% block content %}
-    <form method="POST" class="form-group">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="btn btn-success">Login</button>
-    </form>
+<div class="container-fluid mt-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-5">
+			
+
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<div>Login</div>
+				</div>
+				<div class="card-body">
+					<form method="post">
+						{% csrf_token %}
+						{% for item in form %}
+							<div class="mb-2">
+								<label> {{item.name}}</label>{{ item}}
+							</div>
+						{% endfor %}
+						
+						<div class="text-end mt-2">
+							<button class="btn btn-primary">Login</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
