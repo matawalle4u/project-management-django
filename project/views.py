@@ -9,20 +9,36 @@ from .forms import ProjectForm
 
 @login_required
 def new(response):
-    all_projects = Project.objects.all()
-    my_projects = Project.objects.filter(owner=response.user)
     if response.method == "POST":
         form = ProjectForm(response.POST)
         if form.is_valid():
             saving = form.save(commit=False)
             saving.owner = response.user
+            saving.save()
+        return redirect("/projects")
+    else:
+        form = ProjectForm()
+
+    return render(response, "project/new.html", {"form":form})
+
+@login_required
+def get_user_project(request):
+    
+    user_projects = Project.objects.filter(owner=request.user)
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            saving = form.save(commit=False)
+            saving.owner = request.user
             
             saving.save()
         return redirect("/project/new")
     else:
         form = ProjectForm()
 
-    return render(response, "project/new.html", {"form":form, 'all_projects': all_projects, 'my_projects':my_projects})
+    return render(request, "project/project_lists.html", {'user_projects':user_projects})
+
+    
 
 @login_required
 def projects(request):
