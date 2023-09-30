@@ -21,6 +21,7 @@ from project import views as project_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
+    path("projects/", project_views.get_user_project, name="get_user_project"),
     path("project/new", project_views.new, name="new"),
     path("accounts/login", v.login_view, name="login_view"),
     path('accounts/logout', v.logout_view, name="logout_view"),
