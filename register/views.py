@@ -28,7 +28,7 @@ def login_view(request):
             # Log in the user if the form is valid
             login(request, form.get_user())
             # Redirect to a success page, e.g., the user's profile page
-            return redirect('/project/new')
+            return redirect('/projects')
     else:
         # Display an empty AuthenticationForm for GET requests
         form = AuthenticationForm()
@@ -41,6 +41,8 @@ def logout_view(request):
     return redirect('/accounts/login')
     # Redirect to a success page.
             
+
+    
 
 # Define a custom user check function to restrict admin role assignment to certain users (e.g., superusers).
 def is_superuser(user):
