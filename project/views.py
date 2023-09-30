@@ -45,7 +45,5 @@ def edit_project(request, pk):
 @login_required
 def delete_project(request, pk):
     project = Project.objects.get(pk=pk)
-    if request.method == 'POST':
-        project.delete()
-        return redirect('/project/new')
-    return render(request, 'project/new.html', {'project': project})
+    project.delete()
+    return redirect('/project/new')
