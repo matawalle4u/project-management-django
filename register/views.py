@@ -14,7 +14,7 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("/projects")
+        return redirect("/accounts/login")
     else:
         form = RegisterForm()
 
