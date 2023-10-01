@@ -33,6 +33,8 @@ urlpatterns = [
     path('accounts/logout', v.logout_view, name="logout_view"),
     path('admin-user/login', v.admin_login, name="admin_login"),
     path('admin-user', v.get_users, name="get_users"),
+    path('admin-user/project-views', project_views.projects, name="projects"),
+
     path('admin-user/logout', v.admin_logout, name="admin_logout"),
     
     path("users/<int:pk>/", v.show_user, name="show_user"),

@@ -39,7 +39,7 @@ def projects(request):
     all_projects = Project.objects.all()
     # Check if the user is currently an admin.
     
-    return render(request, 'project/project_lists.html', {'all_projects': all_projects})
+    return render(request, 'project/all_project_lists.html', {'all_projects': all_projects})
 
 
 @login_required
