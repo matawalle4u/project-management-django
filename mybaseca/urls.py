@@ -20,14 +20,24 @@ from project import views as project_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("register/", v.register, name="register"),
+    path("accounts/register/", v.register, name="register"),
     path("projects/", project_views.get_user_project, name="get_user_project"),
+    
     path("project/new", project_views.new, name="new"),
-    path("accounts/login", v.login_view, name="login_view"),
-    path('accounts/logout', v.logout_view, name="logout_view"),
+    path("projects/<int:pk>/", project_views.show_project, name="show_project"),
     path('project/edit/<int:pk>/', project_views.edit_project, name="edit_project"),
     path('project/delete/<int:pk>/', project_views.delete_project, name="delete_project"),
-   
+
+    path("accounts/login", v.login_view, name="login_view"),
+    path('accounts/logout', v.logout_view, name="logout_view"),
+    path('admin-user/login', v.admin_login, name="admin_login"),
+    path('admin-user', v.get_users, name="get_users"),
+    
+
+    path("users/<int:pk>/", v.show_user, name="show_user"),
+    path('user/edit/<int:pk>/', v.edit_user, name="edit_user"),
+    path('user/delete/<int:pk>/', v.delete_user, name="delete_user"),
+
 
     
 ]
