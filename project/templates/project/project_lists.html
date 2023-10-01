@@ -23,11 +23,11 @@
                     </div>
                     <div class="card-body">
                         <div class="list-group">
-                            {% for project in user_projects %}
-                                <a href="/projects/{{ project.id }}"
+                            {% for user_project in user_projects %}
+                                <a href="/projects/{{ user_project.id }}"
                                    class="list-group-item list-group-item-action d-flex justify-content-between">
-                                    <div>{{ project.name}} </div>
-                                    <div>{{ project.added_date}}</div>
+                                    <div>{{ user_project.name}} </div>
+                                    <div>{{ user_project.added_date}}</div>
                                 </a>
                             {% endfor %}
                         </div>

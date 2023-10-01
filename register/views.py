@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User, Group
 
-from .forms import RegisterForm
+from .forms import RegisterForm, EditUserForm
 
 
 # Create your views here.
@@ -36,17 +36,16 @@ def show_user(request, pk):
 
 @login_required
 def edit_user(request, pk):
-    user = User.objects.get(pk=pk)
 
-    
+    user = User.objects.get(pk=pk)
     if request.method == 'POST':
-        form = RegisterForm(request.POST, instance=user)
+        form = EditUserForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
             return redirect('/admin-user')
     else:
-        form = RegisterForm(instance=user)
-    return render(request, 'register/register.html', {'form': form, 'user': user})
+        form = EditUserForm(instance=user)
+    return render(request, 'register/user_edit.html', {'form': form, 'user': user})
 
 
     #return render(request, "register/register.html", {'user':user})
@@ -90,7 +89,10 @@ def admin_login(request):
 def logout_view(request):
     logout(request)
     return redirect('/accounts/login')
-    # Redirect to a success page.
+
+def admin_logout(request):
+    logout(request)
+    return redirect('/admin-user/login')
             
 
     

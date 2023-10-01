@@ -29,7 +29,6 @@ def show_project(request, pk):
 
 @login_required
 def get_user_project(request):
-
     user_projects = Project.objects.filter(owner=request.user)
     return render(request, "project/project_lists.html", {'user_projects':user_projects, 'user':request.user})
 

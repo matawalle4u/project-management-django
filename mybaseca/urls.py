@@ -19,9 +19,10 @@ from register import views as v
 from project import views as project_views
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path("accounts/register/", v.register, name="register"),
-    path("projects/", project_views.get_user_project, name="get_user_project"),
+    path("projects", project_views.get_user_project, name="get_user_project"),
     
     path("project/new", project_views.new, name="new"),
     path("projects/<int:pk>/", project_views.show_project, name="show_project"),
@@ -32,12 +33,10 @@ urlpatterns = [
     path('accounts/logout', v.logout_view, name="logout_view"),
     path('admin-user/login', v.admin_login, name="admin_login"),
     path('admin-user', v.get_users, name="get_users"),
+    path('admin-user/logout', v.admin_logout, name="admin_logout"),
     
-
     path("users/<int:pk>/", v.show_user, name="show_user"),
     path('user/edit/<int:pk>/', v.edit_user, name="edit_user"),
     path('user/delete/<int:pk>/', v.delete_user, name="delete_user"),
 
-
-    
 ]
