@@ -1,13 +1,32 @@
-
-
-{% block title %}Create an Account{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}"/>
 
 {% block content %}
-    <form method="POST" class="form-group">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="btn btn-success">Register</button>
-    </form>
-{% endblock %}
+<div class="container-fluid mt-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-5">
+			
 
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<div>Register</div>
+				</div>
+				<div class="card-body">
+					<form method="POST">
+						{% csrf_token %}
+						{% for item in form %}
+							<label>{{item.name}} </label>
+							{{item}}<br />
+							
+						{% endfor %}
+
+						<div class="text-end mt-2">
+							<button class="btn btn-primary">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'project/css/bootstrap.min.css' %}"/>
+
+{% block content %}
+    <div class="container-fluid mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Hi {{user}}!</a></li>
+                        <li class="breadcrumb-item"><a href="/projects">Projects </a></li>
+                        <li class="breadcrumb-item"><a href="/accounts/login">Logout </a></li>
+                    </ol>
+                </nav>
+
+                <div class="card mt-2">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>Project Information</div>
+                    </div>
+                    <div class="card-body">
+                        
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <b>Project Name:</b> {{project.name}}
+                                </div>
+
+                                <div class="list-group-item">
+                                    <b>Description:</b> {{project.description}}
+                                </div>
+
+                                <div class="list-group-item">
+                                    <b>Project Owner:</b> {{project.owner}}
+                                </div>
+
+                                <div class="list-group-item">
+                                    <b>Creation date:</b> {{project.added_date}}
+                                </div>
+                            </div>
+
+                            <div class="mt-3 text-end">
+                                <a href="/project/edit/{{project.id}}" id="edit_std" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="/project/delete/{{project.id}}" id="delete_std" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+{% endblock %}

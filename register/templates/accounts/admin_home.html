@@ -16,18 +16,18 @@
                 
                 <div class="card mt">
                     <div class="card-header d-flex justify-content-between">
-                        <div>Projects</div>
-                        <a href="/project/new" class="btn btn-sm btn-primary">
-                            Create Project 
+                        <div>Users</div>
+                        <a href="/accounts/register" class="btn btn-sm btn-primary">
+                            Create User 
                         </a>
                     </div>
                     <div class="card-body">
                         <div class="list-group">
-                            {% for project in user_projects %}
-                                <a href="/projects/{{ project.id }}"
+                            {% for user in all_users %}
+                                <a href="/users/{{ user.id }}"
                                    class="list-group-item list-group-item-action d-flex justify-content-between">
-                                    <div>{{ project.name}} </div>
-                                    <div>{{ project.added_date}}</div>
+                                    <div>{{ user.username}} </div>
+                                    
                                 </a>
                             {% endfor %}
                         </div>
