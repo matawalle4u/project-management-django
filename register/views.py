@@ -53,7 +53,8 @@ def edit_user(request, pk):
 @login_required
 def delete_user(request, pk):
     user = User.objects.get(pk=pk)
-    return render(request, "register/user_show.html", {'user':user})
+    user.delete()
+    return redirect('/admin-user')
 
 def login_view(request):
     if request.method == 'POST':
